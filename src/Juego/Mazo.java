@@ -2,6 +2,12 @@ package Juego;
 import java.util.Random;
 
 public class Mazo {
+
+	private final static int cartasPorPalo = 13;
+	private final static int cantidadComodines = 2;
+	// 4 palos x 13 cartas + 2 comodines = 54
+	private final static int totalCartas = 4 * cartasPorPalo + cantidadComodines;
+
 	private StackGenerica<Carta> mazoPila;
 	
 	public Mazo() {
@@ -11,17 +17,23 @@ public class Mazo {
 	
 	public void inicializarMazo() {
 		String[] palos = {"Corazon" ,"Diamante" , "Trébol" ,"Pica"};
-		Carta[] baraja = new Carta[52];
+		Carta[] baraja = new Carta[totalCartas];
 		int contador = 0;
 		
 		//generar 52 cartas
 		for (String palo : palos) {
-			for (int valor = 1; valor <= 13; valor++)  {
+			for (int valor = 1; valor <= cartasPorPalo; valor++)  {
 				baraja[contador] = new Carta(palo,valor);
 				contador++;
 			}
 		}
 		
+		//agregar los dos comodines
+		for (int i = 0; i < cantidadComodines; i++) {
+			baraja[contador] = new Carta(Carta.paloComodin, Carta.valorComodin);
+			contador++;
+		}
+
 		//mezclar las cartas
 		Random random = new Random();
 		for(int i = baraja.length - 1; i>0; i--) {
@@ -49,6 +61,11 @@ public class Mazo {
 	
 	public boolean tieneCartas() {
 		return !mazoPila.isEmpty();
+	}
+
+	// Cantidad de cartas que todavía se pueden repartir
+	public int cartasRestantes() {
+		return mazoPila.count();
 	}
 
 }

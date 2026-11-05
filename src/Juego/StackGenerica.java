@@ -2,7 +2,7 @@ package Juego;
 
 public class StackGenerica<ELEMENT> {
 
-    private final int maximoTamanio=52;
+    private final int maximoTamanio=54;
     private ELEMENT [] datos;
     private int cuenta;
 
