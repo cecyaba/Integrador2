@@ -1,7 +1,7 @@
 //
 // Created by Julio Tentor <jtentor@fi.unju.edu.ar>
 //
-
+package Juego;
 
 public class BinaryTree<ELEMENT> {
 
