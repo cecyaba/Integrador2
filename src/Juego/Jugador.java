@@ -43,6 +43,11 @@ public class Jugador {
 		cartasGanadas.offer(carta);
 	}
 	
+	// Se llama al empezar cada partida: el puntaje de una partida no debe arrastrar las cartas de las anteriores
+	public void reiniciarCartasGanadas() {
+		this.cartasGanadas = new Queue<Carta>(52);
+	}
+
 	public int calcularPuntaje() {
 	    int puntaje = 0;
 	    Queue<Carta> aux = new Queue<>(52);
