@@ -125,6 +125,8 @@ public class Partida {
         int[] puntajesFinales = new int[4];
         for (int i = 0; i < 4; i++) {
             puntajesFinales[i] = jugadores[i].calcularPuntaje();
+
+            jugadores[i].actualizarPuntajeMaximo(puntajesFinales[i]);// agregue esta linea para actualizar el record del jugador
             System.out.println("Puntaje de " + jugadores[i].getNombreCompleto() + ": " + puntajesFinales[i]);
             if (puntajesFinales[i] > puntajeMaximo) {
                 puntajeMaximo = puntajesFinales[i];
