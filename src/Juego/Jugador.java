@@ -2,42 +2,53 @@ package Juego;
 
 public class Jugador {
 	
+	private String dni;
+    private int numeroJugador;
 	private String nombre;
 	private String apellido;
 	private int edad;
+	private int puntajeMaximo;
 	private Queue<Carta> cartasGanadas;
 	
-	public Jugador (String nombre, String apellido, int edad) {
-		this.nombre = nombre;
-		this.apellido = apellido;
-		this.edad = edad;
-		this.cartasGanadas = new Queue<Carta>(52);
-	}
+	public Jugador(String dni, int numeroJugador, String nombre, String apellido, int edad) {
+        this.dni = dni;
+        this.numeroJugador = numeroJugador;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.edad = edad;
+        this.puntajeMaximo = 0;
+        this.cartasGanadas = new Queue<Carta>(52);
+    }
 
-	public String getNombre() {
-		return nombre;
-	}
+    public String getDni() {
+        return dni;
+    }
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
+    public int getNumeroJugador() {
+        return numeroJugador;
+    }
 
-	public String getApellido() {
-		return apellido;
-	}
+    public String getNombre() {
+        return nombre;
+    }
 
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
-	}
+    public String getApellido() {
+        return apellido;
+    }
 
-	public int getEdad() {
-		return edad;
-	}
+    public int getEdad() {
+        return edad;
+    }
+    
+    public int getPuntajeMaximo() {
+        return puntajeMaximo;
+    }
 
-	public void setEdad(int edad) {
-		this.edad = edad;
-	}
-	
+    public void actualizarPuntajeMaximo(int nuevoPuntaje) {
+        if (nuevoPuntaje > this.puntajeMaximo) {
+            this.puntajeMaximo = nuevoPuntaje;
+        }
+    }
 	
 	public void agregarCartaGanada(Carta carta) {
 		cartasGanadas.offer(carta);
@@ -73,5 +84,10 @@ public class Jugador {
 	public String getNombreCompleto() {
 		return nombre + " " + apellido;
 	}
+
+	@Override
+    public String toString() {
+        return "[#" + numeroJugador + "] " + getNombreCompleto() + " (DNI: " + dni + ") - Máx Puntaje: " + puntajeMaximo;
+    }
 	
 }

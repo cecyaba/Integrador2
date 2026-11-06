@@ -130,7 +130,7 @@ public class Partida {
                 puntajeMaximo = puntajesFinales[i];
             }
         }
-        System.out.print("\n🏆 Ganador(es): ");
+        System.out.print("\n🏆 Ganador(es): de la partida: ");
         for (int i = 0; i < 4; i++) {
             if (puntajesFinales[i] == puntajeMaximo) {
                 System.out.print(jugadores[i].getNombreCompleto() + "  ");
